@@ -1,38 +1,37 @@
 {
-  "name": "fiftyseven",
-  "description": "57 Test",
-  "version": "1.0.0",
-  "author": "Andrew Garbzuvo <agarbuzov@dzinga.com>",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
-  },
-  "dependencies": {
-    "dotenv": "^6.0.0",
-    "vue": "^2.5.17"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-3": "^6.24.1",
-    "cross-env": "^5.2.0",
-    "css-loader": "^1.0.0",
-    "file-loader": "^1.1.11",
-    "node-sass": "^4.9.2",
-    "sass-loader": "^7.1.0",
-    "vue-loader": "^15.2.6",
-    "vue-template-compiler": "^2.5.17",
-    "webpack": "^4.16.3",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5",
-    "webpack-merge": "4.1.2"
-  }
+    "name": "fiftyseven",
+    "description": "57 Test",
+    "version": "1.0.0",
+    "author": "Andrew Garbuzov <agarbuzov@dzinga.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "dev": "webpack-dev-server --progress --hot",
+        "build": "webpack --progress --hide-modules"
+    },
+    "dependencies": {
+        "vue": "2.5.17"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "devDependencies": {
+        "babel-core": "6.26.3",
+        "babel-loader": "7.1.5",
+        "babel-preset-env": "1.7.0",
+        "babel-preset-stage-3": "6.24.1",
+        "css-loader": "1.0.0",
+        "dotenv": "6.0.0",
+        "file-loader": "1.1.11",
+        "node-sass": "4.9.3",
+        "sass-loader": "7.1.0",
+        "vue-loader": "15.3.0",
+        "vue-template-compiler": "2.5.17",
+        "webpack": "4.16.5",
+        "webpack-cli": "3.1.0",
+        "webpack-dev-server": "3.1.5",
+        "webpack-merge": "4.1.4"
+    }
 }
