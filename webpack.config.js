@@ -1,17 +1,20 @@
 require('dotenv').config();
 const path = require('path');
 const {VueLoaderPlugin} = require('vue-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
     mode: 'production',
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'build.js'
+        filename: '[name].[hash:5].js'
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/index.ejs'
+        }),
     ],
     module: {
         rules: [
@@ -62,8 +65,13 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -114,11 +122,6 @@ if (process.env.NODE_ENV !== 'development') {
     module.exports.devtool = '#source-map';
     // http://vue-loader.vuejs.org/en/workflow/production.html
     module.exports.plugins = (module.exports.plugins || []).concat([
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
