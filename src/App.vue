@@ -1,7 +1,10 @@
 <template>
     <div id="app">
-        <HeaderSection/>
+        <TheHeader/>
         <img src="./assets/logo.png">
+        <base-button myTitle="ButtonTitle" title="MyButton" class="myClass"/>
+
+        <div v-if="this.post">{{post}}</div>
         <h1>{{ msg }}</h1>
         <h2>Essential Links</h2>
         <ul>
@@ -17,25 +20,47 @@
             <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
             <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
         </ul>
-        <FooterSection/>
+
+        <post-example
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:title="post.title"
+        ></post-example>
+        <TheFooter/>
     </div>
 </template>
 
 <script>
-import HeaderSection from './components/HeaderSection';
-import FooterSection from './components/FooterSection';
+import TheHeader from './components/TheHeader';
+import TheFooter from './components/TheFooter';
+import PostExample from './components/PostsExample';
 
 export default {
     name: 'app',
     data() {
         return {
-            msg: 'Welcome to Your Vue.js App'
+            msg: 'Welcome to Your Vue.js App',
+            posts: []
         };
     },
     components: {
-        HeaderSection,
-        FooterSection,
+        TheHeader,
+        TheFooter,
+        'post-example': PostExample,
     },
+    created: function () {
+        // Alias the component instance as `vm`, so that we
+        // can access it inside the promise function
+        let vm = this;
+        // Fetch our array of posts from an API
+        fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (responseData) {
+            vm.posts = responseData;
+        });
+    }
 };
 </script>
 

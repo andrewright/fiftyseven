@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import App from './App.vue';
 import Mixins from './mixins';
+import BaseButton from './components/common/BaseButton';
 
-Vue.extend({
-    mixins: [Mixins]
-});
+Vue.component('base-button', BaseButton);
+Vue.mixin(Mixins);
 
 new Vue({
     el: '#app',
