@@ -1,5 +1,7 @@
 <template>
-    <h3>{{ title }}</h3>
+    <div>
+        <a :href="'https://jsonplaceholder.typicode.com/posts/' + id" target="_blank">{{ title }} {{id}}</a>
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -9,6 +11,6 @@
 </style>
 <script>
 export default {
-    props: ['title'],
+    props: ['title', 'key', 'id'],
 };
 </script>
