@@ -1,3 +1,5 @@
+![build:passed](https://travis-ci.org/andrewright/fiftyseven.svg?branch=develop)
+
 # fiftyseven
 
 > 57 Test
